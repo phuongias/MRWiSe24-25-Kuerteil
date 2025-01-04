@@ -3,33 +3,52 @@
 <head>
     <meta charset="utf-8"/>
     <title>VR/AR Fensterprojektion</title>
-    <!-- Skripte -->
-    <script src="scripts/main.js"></script>
 
-    <script src="scripts/AR.js"></script>
+    <!-- Styles -->
+    <style>
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 999;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!-- Bibliotheken -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
 
-    <!-- include ar.js for A-Frame -->
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <!-- Skripte -->
+    <script src="scripts/AR.js"></script>
+    <script src="components/main.js" defer></script>
 </head>
-<body>
-<!--Quelle: https://www.google.com/search?q=Ar+marker+to+detect+windows&oq=Ar+marker+to+detect+windows&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORigATIHCAEQIRigATIHCAIQIRigAdIBCDY4OTFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8 -->
-<a-scene embedded arjs>
-    <!-- create your content here. just a box for now -->
-    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-    <!-- define a camera which will move according to the marker position -->
-    <a-marker-camera preset='hiro'></a-marker-camera>
 
-    <!--Buttons hinzugefügt-->
-    <div id="ui">
-        <button>Bild anzeigen</button>
-        <button>Video abspielen</button>
-    </div>
-</a-scene>
+<body style="margin: 0; overflow: hidden;">
 
+<!-- AR-Scene -->
+<a-scene embedded arjs> </a-scene>
+
+    <!-- Kamera -->
+    <a-entity camera></a-entity></a-scene>
+
+<!-- UI Buttons -->
+<div id="ui">
+    <button id="showImageBtn">Bild anzeigen</button>
+    <button id="playVideoBtn">Video abspielen</button>
+</div>
 
 </body>
 </html>
